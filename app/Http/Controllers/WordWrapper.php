@@ -17,6 +17,12 @@ class WordWrapper extends Controller
 		if ($output == null) {
 			return $this->generateResponse(0,"value missing for word.",false,200);
 		}
+		if ( preg_match('/\s/',$output) )
+		{
+			return $this->generateResponse(0,"Enter single word only.",false,200);
+    		
+		}
+
 		$len = strlen($output);
 		$chars = str_split($output);
 
@@ -75,7 +81,9 @@ class WordWrapper extends Controller
     	$temp = $str[$i];
     	$str[$i] = $str[$j];
     	$str[$j] = $temp;
-	}   	public function sampling($chars, $size, $combinations = array()) {
+	}   	
+
+	public function sampling($chars, $size, $combinations = array()) {
 
 	    # if it's the first iteration, the first set 
 	    # of combinations is the same as the set of characters
