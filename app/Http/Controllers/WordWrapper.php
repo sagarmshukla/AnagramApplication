@@ -15,7 +15,7 @@ class WordWrapper extends Controller
 	        $output = $request->input('word');
 
 		if ($output == null) {
-			return $this->generateResponse(0,"value missing for word.",false,200);
+			return $this->generateResponse(0,"Please provide value.",false,200);
 		}
 		if ( preg_match('/\s/',$output) )
 		{
